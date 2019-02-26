@@ -20,7 +20,6 @@ class PlaygroundTest {
 
         testScheduler.advanceTimeBy(5, TimeUnit.SECONDS)
 
-
         processedLists.assertComplete()
         processedLists.assertValue(listOf(6, 4, 2))
     }

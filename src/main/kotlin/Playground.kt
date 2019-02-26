@@ -7,11 +7,13 @@ object Playground {
 
 
     fun processLists(firstList: List<Int>, secondList: List<Int>): Single<List<Int>> {
+
         val l1 = Observable.just(firstList)
             .delay(1, TimeUnit.SECONDS)
 
         val l2 = Observable.just(secondList)
             .delay(3, TimeUnit.SECONDS)
+
         return Observable
             .zip(l1, l2, BiFunction<List<Int>, List<Int>, List<Int>> { first, second -> mergeLists(first, second) })
             .flatMap { Observable.fromIterable(it) }
@@ -27,6 +29,4 @@ object Playground {
         result.addAll(second)
         return result
     }
-
-
 }
